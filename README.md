@@ -1,130 +1,114 @@
 # Tampermonkey Universal AI Prompt Commands IT
 
-**Tampermonkey Universal AI Prompt Commands IT** è uno userscript per l’estensione **Tampermonkey**. Aiuta a lavorare più velocemente con chat di intelligenza artificiale come ChatGPT, Gemini, Claude, Copilot e altri siti con campi di testo.
+Versione italiana di uno script Tampermonkey per lavorare più velocemente con le chat di intelligenza artificiale.
 
-Lo script sostituisce comandi brevi come `IT1`, `IT3` o `IT10` con prompt IA lunghi e già preparati.
-
----
+Lo script sostituisce i trigger universali `Q1–Q10` con prompt IA preparati. Questi trigger non sono legati a una lingua: l’utente può sostituire `Q1`, `Q2` e gli altri con parole, comandi o frasi personali.
 
 ## A cosa serve
 
-Serve per inserire rapidamente prompt pronti per traduzione, riassunto, analisi di lettere, estrazione di fatti, risposte ufficiali e redazione di testi.
-
----
+Serve per inserire rapidamente prompt in ChatGPT, Gemini, Claude, Copilot e altre chat IA. Invece di scrivere ogni volta un’istruzione lunga, basta digitare `Q1` e lo script inserisce il prompt completo.
 
 ## Come funziona
 
-Lo script controlla i campi di inserimento. Se il campo contiene esattamente un comando conosciuto, ad esempio:
+Lo script controlla il campo di testo attivo. Se l’intero contenuto del campo corrisponde esattamente a uno dei trigger `Q1–Q10`, viene sostituito dal prompt preparato.
 
 ```text
-IT1
+Q1
 ```
 
-lo sostituisce con un prompt completo. Il testo normale non viene modificato.
+viene sostituito da un prompt per la traduzione in italiano.
 
----
+```text
+Q8
+```
 
-## Esempi
+viene sostituito da un prompt per estrarre fatti importanti.
 
-- `IT1` — traduzione precisa in italiano.
-- `IT3` — riassunto tematico di una lettera in una riga.
-- `IT8` — estrazione di date, importi, persone, organizzazioni e documenti.
-- `IT10` — lettera ufficiale in tedesco semplice A2-B1.
+Il testo normale non viene modificato. Per esempio `Q1 altro testo` non viene sostituito.
 
----
+## Trigger personalizzati
+
+I trigger si possono cambiare nel codice, nell’oggetto `COMMANDS`.
+
+```javascript
+'Q1': `...`
+```
+
+può diventare:
+
+```javascript
+'TRADUCI': `...`
+```
+
+`Q1–Q10` sono solo i trigger universali predefiniti.
 
 ## Dove usarlo
 
-Principalmente in chat IA: ChatGPT, Google Gemini, Claude, Microsoft Copilot e altri siti con campo di testo.
+- ChatGPT
+- Google Gemini
+- Claude
+- Microsoft Copilot
+- altri siti con campo di testo
+
+Il codice contiene:
 
 ```javascript
 // @match        *://*/*
 ```
 
-Questo permette l’uso su siti diversi. Vengono sostituiti solo comandi esatti.
+## Requisito prima dell’installazione
 
----
+Deve essere installata l’estensione **Tampermonkey** nel browser. Lo script si installa in Tampermonkey, non in GitHub e non in un sito specifico. GitHub serve solo per conservare il file `.user.js`.
 
-## Prima dell’installazione
-
-Deve essere installata l’estensione **Tampermonkey** nel browser. Tampermonkey consente di installare ed eseguire file `.user.js`.
-
----
-
-## Installazione rapida tramite Raw
+## Installazione rapida
 
 1. Installa Tampermonkey.
-2. Apri questo link Raw:
+2. Apri il link Raw:
 
 ```text
 https://raw.githubusercontent.com/1777maxim7771/it_tampermonkey-universal-ai-prompt-commands/main/tampermonkey-universal-ai-prompt-commands.user.js
 ```
 
-3. Tampermonkey aprirà la finestra di installazione.
-4. Premi **Install / Installa**.
-5. Prova il comando `IT1` in una chat IA.
-
----
+3. Conferma l’installazione in Tampermonkey.
+4. Apri una chat IA e digita `Q1`.
 
 ## Installazione da GitHub
 
-Apri il file `tampermonkey-universal-ai-prompt-commands.user.js`, premi **Raw** e conferma l’installazione in Tampermonkey.
-
----
+Apri il file `tampermonkey-universal-ai-prompt-commands.user.js`, clicca **Raw** e conferma l’installazione in Tampermonkey.
 
 ## Importazione tramite URL
 
-Se Raw non apre l’installazione: Tampermonkey → Dashboard → Utilities → Import from URL → incolla il link Raw.
-
----
+In Tampermonkey apri **Dashboard → Utilities → Import from URL**, incolla il link Raw e conferma.
 
 ## Installazione manuale
 
-Tampermonkey → Create a new script → elimina il modello → incolla il contenuto del file `.user.js` → salva con **Ctrl + S**.
-
----
+Crea un nuovo script in Tampermonkey, incolla il codice del file `.user.js` e salva.
 
 ## Perché Tampermonkey riconosce lo script
 
-Lo riconosce grazie all’intestazione `// ==UserScript==` e all’estensione `.user.js`. Lo script si installa in **Tampermonkey**, non in GitHub e non in un sito specifico. GitHub conserva solo il file.
+Tampermonkey riconosce l’intestazione `// ==UserScript==` e l’estensione `.user.js`.
 
----
+## Comandi predefiniti
 
-## Comandi
-
-- `IT1` — traduzione in italiano.
-- `IT2` — riassunto in italiano.
-- `IT3` — riassunto di una lettera in una riga.
-- `IT4` — traduzione in tedesco A2-B1.
-- `IT5` — correzione di testo italiano.
-- `IT6` — breve risposta ufficiale.
-- `IT7` — spiegazione semplice.
-- `IT8` — estrazione di fatti importanti.
-- `IT9` — elenco di azioni necessarie.
-- `IT10` — lettera ufficiale in tedesco.
-
----
+- `Q1` — traduzione in italiano.
+- `Q2` — riassunto del testo.
+- `Q3` — riassunto di una lettera in una riga.
+- `Q4` — traduzione in tedesco semplice A2-B1.
+- `Q5` — correzione del testo italiano.
+- `Q6` — risposta ufficiale breve.
+- `Q7` — spiegazione semplice del testo.
+- `Q8` — estrazione dei fatti importanti.
+- `Q9` — lista delle azioni necessarie.
+- `Q10` — lettera ufficiale in tedesco.
 
 ## Verifica
 
-Scrivi `IT1` in un campo di testo. Se viene sostituito da un prompt completo, lo script funziona.
+Digita `Q1` in una chat IA. Se lo script funziona, `Q1` sarà sostituito dal prompt completo.
 
----
+## Possibili problemi
 
-## Problemi possibili
-
-Controlla che Tampermonkey sia attivo, che lo script sia attivato, che la pagina sia aggiornata e che il comando sia scritto da solo.
-
----
-
-## File dello script
-
-```text
-tampermonkey-universal-ai-prompt-commands.user.js
-```
-
----
+Controlla che lo script sia attivo, che la pagina sia stata ricaricata, che `Q1` sia scritto senza testo aggiuntivo, che Tampermonkey sia autorizzato sul sito e che il cursore sia in un campo modificabile.
 
 ## Obiettivo del progetto
 
-Accelerare il lavoro ripetitivo con chat IA tramite comandi brevi che inseriscono prompt completi.
+Accelerare il lavoro ripetitivo con le chat IA: traduzione, riassunto, analisi di lettere, risposte ufficiali e gestione di documenti.
